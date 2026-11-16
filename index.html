@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#15110d">
+<title>365 Journal · imakemu5ic</title>
+<style>
+:root{--bg:#15110d;--panel:#1f1a14;--panel2:#272017;--line:#3a2f23;--text:#f1e7d8;--muted:#a8977f;--accent:#e8a24a;--ok:#8fbf7f;--warn:#d98a6a;
+--Moment:#e8a24a;--Theory:#8fb7d9;--Push:#c79be0;--Stack:#e58fa3;--Finish:#8fbf7f;--YourTurn:#e0cf7a;--Still:#b9b0a2;--Remix:#f08a4b;--Own:#7fd0c4}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3,.serif{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:600;letter-spacing:.01em}
+header{position:sticky;top:0;z-index:5;background:rgba(21,17,13,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{max-width:760px;margin:0 auto;padding:12px 16px 0;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.bar h1{font-size:20px;margin:0}
+.bar small{color:var(--muted)}
+nav{max-width:760px;margin:0 auto;display:flex;gap:4px;padding:8px 12px 0;overflow-x:auto}
+nav button{flex:1;background:none;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:10px 8px;font:inherit;cursor:pointer;white-space:nowrap}
+nav button.on{color:var(--text);border-color:var(--accent)}
+main{max-width:760px;margin:0 auto;padding:16px 16px 80px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 16px}
+.card h2{margin:0 0 6px;font-size:22px;line-height:1.25}
+.card h3{margin:0 0 10px;font-size:17px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:99px;border:1px solid currentColor}
+.hook{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:24px;line-height:1.25;margin:12px 0 4px}
+.label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1;min-width:140px}
+button.b{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit;cursor:pointer;text-align:center}
+button.b:hover{border-color:var(--accent)}
+button.b.primary{background:var(--accent);color:#1a1208;border-color:var(--accent);font-weight:600}
+button.b.ghost{background:none}
+button.link{background:none;border:0;color:var(--accent);font:inherit;padding:0;cursor:pointer;text-decoration:underline}
+input,textarea,select{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus,select:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}
+.check{display:flex;gap:8px;align-items:flex-start;margin-top:12px;color:var(--muted);font-size:14px}
+.check input{width:auto;margin-top:3px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-size:24px;font-family:"Iowan Old Style",Georgia,serif}
+.stat span{font-size:13px;color:var(--muted)}
+.progress{height:6px;background:var(--line);border-radius:9px;overflow:hidden;margin:10px 0 4px}
+.progress i{display:block;height:100%;background:var(--accent)}
+.item{border-top:1px solid var(--line);padding:12px 0}
+.item:first-child{border-top:0}
+.item .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.item .h{font-family:"Iowan Old Style",Georgia,serif;font-size:17px;margin:4px 0}
+.item .acts{display:flex;gap:14px;margin-top:6px;font-size:14px;flex-wrap:wrap}
+.banner{border:1px solid var(--warn);color:var(--text);background:rgba(217,138,106,.1);border-radius:12px;padding:12px 14px;margin-bottom:16px;font-size:15px}
+.banner.ok{border-color:var(--ok);background:rgba(143,191,127,.1)}
+details summary{cursor:pointer;color:var(--accent);font-size:14px;margin-top:10px}
+details p{color:var(--muted);font-size:14px}
+.bars div{display:flex;align-items:center;gap:8px;font-size:13px;margin:6px 0}
+.bars span{width:74px;color:var(--muted)}
+.bars i{height:10px;border-radius:5px;display:block;min-width:2px}
+.days{display:flex;gap:6px;flex-wrap:wrap}
+.days label{margin:0;display:flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:9px;padding:7px 10px;color:var(--text);font-size:14px}
+.days input{width:auto}
+svg text{fill:var(--muted);font-size:11px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:99px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar"><h1>365 Journal</h1><small id="sub"></small></div>
+  <nav id="nav">
+    <button data-view="day">Today</button>
+    <button data-view="plan">Plan</button>
+    <button data-view="journal">Journal</button>
+    <button data-view="stats">Progress</button>
+    <button data-view="settings">Settings</button>
+  </nav>
+</header>
+<main id="app"></main>
+<div class="toast" id="toast"></div>
+<script src="plan.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
